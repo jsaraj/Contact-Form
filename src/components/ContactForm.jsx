@@ -1,6 +1,8 @@
 
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ContactForm() {
 
@@ -15,8 +17,10 @@ function ContactForm() {
             .then(
                 () => {
                     console.log('SUCCESS!');
+                    toast.success("Send Message Successfully",{position:'top-left',closeOnClick:true})
                 },
                 (error) => {
+                    toast.error("Your Message Not Send",{position:'top-left',closeOnClick:true})
                     console.log('FAILED...', error.text);
                 },
             );
@@ -42,6 +46,7 @@ function ContactForm() {
                         <div className='flex justify-center'>
                             <button className='bg-gray-300 w-full rounded-md p-2 font-semibold shadow-[0_0px_5px_3px_rgba(0,0,0,0.1)]' >Send</button>
                         </div>
+                        <ToastContainer />
                     </form>
                 </div>
             </div>
